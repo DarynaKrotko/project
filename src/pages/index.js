@@ -1,0 +1,5 @@
+export * from './HomePage/HomePage'
+export * from './GenresPage/GenresPage'
+export * from './MovieByGenrePage/MovieByGenrePage'
+export * from './MovieDetailsPage/MovieDetailsPage'
+export * from './SearchPage/SearchPage'

@@ -1,0 +1,36 @@
+.app{
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    padding-top: 100px;
+    position: relative;
+    overflow: scroll;
+}
+.app.light{
+    background: #cfcff1;
+    transition: background-color 0.3s ease-out;
+}
+.app.dark{
+    background: #8080c5;
+    transition: background-color 0.3s ease-out;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    min-width: 320px;
+    max-width: 1100px;
+    position: relative;
+    margin: 0 auto;
+    font: 14px 'Exo 2', Roboto, Oxygen, sans-serif;
+}
+.container.light{
+    background: #c5c5f3;
+}
+.container.dark{
+    background: #4d4db0;
+    color: white;
+}

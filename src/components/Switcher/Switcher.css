@@ -1,0 +1,24 @@
+.switcher{
+    border-radius: 10px;
+    padding: 3px 10px;
+    border: 1px solid gray;
+}
+.switcher.light{
+    background-color: #cfcff1;
+}
+.switcher.light:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.5s;
+    background-color: #8080c5;
+    color: silver;
+}
+.switcher.dark{
+    background-color: #8080c5;
+    color: white;
+}
+.switcher.dark:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.5s;
+    background-color: #cfcff1;
+    color: gray;
+}
