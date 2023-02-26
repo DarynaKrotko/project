@@ -5,21 +5,29 @@ import {movieService} from "../services";
 const initialState ={
     search:[],
     query: null,
+    loading:null
 };
+
 const searchSlice = createSlice({
     name:'searchSlice',
     initialState,
     reducers:{
         setQuery:(state, action)=>{
-            state.query = action.payload
+            state.query = action.payload=== null? state.query : action.payload
         }
     },
-    extraReducers:builder => 
-        builder.addCase(search.fulfilled, (state, action)=>{
-            const {results, page} = action.payload;
-            state.search = results
-            state.page = page
-        })
+    extraReducers:builder =>
+        builder
+            .addCase(search.fulfilled, (state, action)=>{
+                const {results, page} = action.payload;
+                state.search = results=== null? [...state.search]:results
+                state.page = page
+                state.loading = false;
+            })
+            .addCase(search.pending, (state)=>{
+                state.loading = true;
+            })
+
 });
 
 const search = createAsyncThunk(
@@ -31,7 +39,7 @@ const search = createAsyncThunk(
         }catch (e) {
             return rejectWithValue(e.response.data)
         }
-}
+    }
 )
 
 const {reducer: searchReducer, actions:{setQuery}} = searchSlice;
@@ -45,6 +53,7 @@ export{
     searchReducer,
     searchActions
 }
+
 
 
 

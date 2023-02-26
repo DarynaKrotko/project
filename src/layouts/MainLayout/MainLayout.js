@@ -4,12 +4,12 @@ import {Header} from "../../components";
 
 const MainLayout = () => {
 
- return (
-  <div>
-   <Header/>
-      <Outlet/>
-  </div>
- );
+    return (
+        <div>
+            <Header/>
+            <Outlet/>
+        </div>
+    );
 };
 
 export {MainLayout};

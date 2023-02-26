@@ -5,7 +5,11 @@ const urls={
     movie: '/movie',
     genres:'/genre/movie/list',
     genre:'/discover/movie',
-    search: '/search/movie'
+    search: '/search/multi',
+    tvShows:'/discover/tv',
+    tvShow:'tv',
+    tvGenres: '/genre/tv/list',
+    tvGenre:'discover/tv'
 }
 
 export{

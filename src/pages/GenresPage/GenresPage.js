@@ -6,10 +6,10 @@ const GenresPage = () => {
     const location = useLocation();
 
     return (
-  <div>
-      {location.pathname === '/genres' ? <Genres/> : <Outlet/>}
-  </div>
- );
+        <div>
+            {location.pathname === '/genres' ? <Genres/> : <Outlet/>}
+        </div>
+    );
 };
 
 export {GenresPage};

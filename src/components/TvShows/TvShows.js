@@ -1,19 +1,19 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
 import {useSearchParams} from "react-router-dom";
+import {useEffect} from "react";
 
-import {Movie} from "../Movie/Movie";
-import css from './Movies.module.css'
-import {movieActions} from "../../redux";
+import {tvShowActions} from "../../redux";
+import {TvShow} from "../TvShow/TvShow";
+import css from "../Movies/Movies.module.css";
 import {Loading} from "../Loading/Loading";
 
-const Movies = () => {
-    const {movies, loading} = useSelector(state => state.movies);
+const TvShows = () => {
+    const {tvShows, loading} = useSelector(state => state.tvShows);
     const [query, setQuery] = useSearchParams({page:'1'});
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(movieActions.getAll({page: query.get('page')}))
+        dispatch(tvShowActions.getAll({page:query.get('page')}))
     },[dispatch, query])
 
     return (
@@ -23,7 +23,7 @@ const Movies = () => {
                 <button onClick={()=>{setQuery(query=>({page:+query.get('page')+1}))}}>Наступна сторінка</button>
             </div>
             <div className={css.movieBox}>
-                {loading? <Loading/>:movies.map(movie=> <Movie key={movie.id} movie={movie}/>)}
+                {loading?<Loading/>:tvShows.map(tvShow=><TvShow key={tvShow.id} tvShow={tvShow}/>)}
             </div>
             <div className={css.buttons}>
                 <button disabled={+query.get('page')-1=== 0} onClick={()=>{setQuery(query=>({page:+query.get('page')-1}))}}>Попередня сторінка</button>
@@ -33,4 +33,4 @@ const Movies = () => {
     );
 };
 
-export {Movies};
+export {TvShows};

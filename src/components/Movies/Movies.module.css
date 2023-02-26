@@ -19,6 +19,10 @@
 .buttons button:hover{
     background: #dbd8f1;
 }
+.movieByGenre{
+    font-weight: normal;
+    text-align: center;
+}
 .movieLight, .movieDark{
     width: 30%;
     display: flex;
