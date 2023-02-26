@@ -5,7 +5,6 @@ import {MovieDetails} from "../../components";
 const MovieDetailsPage = () => {
     const {id} = useParams();
 
-    console.log(id);
     return (
         <div>
             <MovieDetails id={id}/>
