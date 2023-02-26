@@ -3,12 +3,11 @@ import StarRatings from "react-star-ratings/build/star-ratings";
 
 import "./MovieInfo.css"
 
-const MovieInfo = ({movie}) => {
- const {title,original_title, poster_path, release_date,status, adult,runtime, overview, genres, vote_average,backdrop_path
- } = movie;
+const MovieInfo = ({movie ,videos}) => {
+ const {title,original_title, poster_path, release_date,status, adult,runtime, overview, genres, vote_average,backdrop_path} = movie;
 
- return (
-  <div className={'movieInfo'}>
+    return (
+  <div className={'info'}>
       <div className={'title'}>
           <h1>{title}</h1>
           <div className={'original'}>{original_title}</div>
@@ -72,10 +71,9 @@ const MovieInfo = ({movie}) => {
           <h2>Про фільм {title}</h2>
           <p>{overview}</p>
       </div>
-
-
-
-
+      <div className={'trailer'}>
+          <iframe src={`https://www.youtube.com/embed/${videos?.key}?autoplay=0&controls=2`} title={title} id={videos?.id} width="640" height="360" allowFullScreen="allowFullScreen" ></iframe>
+      </div>
   </div>
  );
 }

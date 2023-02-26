@@ -1,17 +1,17 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
-import {movieService} from "../services";
+import {tvShowService} from "../services";
 
-const initialState = {
+const initialState={
     genres:[],
-    genre: null,
+    genre:null,
     loading:null
 };
-const genreSlice = createSlice({
-    name:'genreSlice',
+const tvGenreSlice = createSlice({
+    name:'tvGenreSlice',
     initialState,
     reducers:{},
-    extraReducers: builder =>
+    extraReducers:builder =>
         builder
             .addCase(getAll.fulfilled, (state, action)=>{
                 state.genres = action.payload
@@ -28,14 +28,12 @@ const genreSlice = createSlice({
             .addCase(getGenre.pending, (state) => {
                 state.loading = true;
             })
-    }
-);
-
+});
 const getAll = createAsyncThunk(
-    'genreSlice/getAll',
+    'tvGenreSlice/getAll',
     async(_, {rejectWithValue})=>{
         try {
-            const {data} = await movieService.getAllGenres();
+            const {data} = await tvShowService.getAllGenres();
             return data;
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -44,24 +42,24 @@ const getAll = createAsyncThunk(
 );
 
 const getGenre = createAsyncThunk(
-    'genreSlice/getGenre',
+    'tvGenreSlice/getGenre',
     async ({page,with_genres}, {rejectWithValue})=>{
         try {
-            const {data} = await movieService.getOneGenre(page, with_genres);
+            const {data} = await tvShowService.getOneGenre(page, with_genres);
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
 );
-const {reducer:genreReducer} = genreSlice;
 
-const genreActions ={
+const {reducer:tvGenreReducer} = tvGenreSlice;
+
+const tvGenreActions ={
     getAll,
     getGenre
 }
-
-export {
-    genreReducer,
-    genreActions
+export{
+    tvGenreReducer,
+    tvGenreActions
 }

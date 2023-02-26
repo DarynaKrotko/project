@@ -1,11 +1,12 @@
-import {MoviesByGenre} from "../../components/MoviesByGenre/MoviesByGenre";
+import {MoviesByGenre} from "../../components";
 
 const MovieByGenrePage = () => {
- return (
-  <div>
-   <MoviesByGenre/>
-  </div>
- );
+
+    return (
+        <div>
+            <MoviesByGenre/>
+        </div>
+    );
 };
 
 export {MovieByGenrePage};

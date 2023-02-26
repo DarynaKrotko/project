@@ -9,7 +9,8 @@ const movieService ={
     getMovie:(id)=> axiosService.get(`${urls.movie}/${id}`, {params:{language}}),
     getAllGenres: ()=> axiosService.get(urls.genres, {params:{language}}),
     getOneGenre:(page=1, with_genres=null)=> axiosService.get(urls.genre, {params:{page, with_genres, language}}),
-    search: (query=null, page=1)=> axiosService.get(urls.search, {params:{query, page, language}})
+    search: (query=null, page=1)=> axiosService.get(urls.search, {params:{query, page, language}}),
+    getVideos:(id) => axiosService.get(`${urls.movie}/${id}/videos`, {params: {language}})
 }
 
 export {movieService};

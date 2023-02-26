@@ -1,36 +1,34 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
-import {movieService} from "../services";
+import {tvShowService} from "../services";
 
 
-const  initialState = {
-    movies: [],
-    movie:null,
-    videos: [],
-    page:null,
+const initialState={
+    tvShows:[],
+    tvShow: null,
+    videos:[],
     loading: null
 };
-const movieSlice = createSlice({
-    name:'movieSlice',
+const tvShowSlice = createSlice({
+    name: 'tvShowSlice',
     initialState,
-    reducers:{
-    },
+    reducers:{},
     extraReducers: builder => {
         builder
             .addCase(getAll.fulfilled, (state, action) => {
                 const {results, page} = action.payload;
-                state.movies = results;
+                state.tvShows = results;
                 state.page = page;
                 state.loading = false;
             })
             .addCase(getAll.pending, (state)=>{
                 state.loading = true;
             })
-            .addCase(getMovie.fulfilled, (state, action) => {
-                state.movie = action.payload;
+            .addCase(getTvShow.fulfilled, (state, action) => {
+                state.tvShow = action.payload;
                 state.loading = false;
             })
-            .addCase(getMovie.pending, (state) => {
+            .addCase(getTvShow.pending, (state) => {
                 state.loading = true;
             })
             .addCase(getVideos.fulfilled,(state, action)=>{
@@ -41,10 +39,10 @@ const movieSlice = createSlice({
 });
 
 const getAll = createAsyncThunk(
-    'movieSlice/getAll',
+    'tvShowSlice/getAll',
     async ({page}, {rejectWithValue})=>{
         try {
-            const {data} = await movieService.getAll(page);
+            const {data} = await tvShowService.getAll(page);
             return data;
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -52,11 +50,11 @@ const getAll = createAsyncThunk(
     }
 );
 
-const getMovie = createAsyncThunk(
-    'movieSlice/getMovie',
+const getTvShow = createAsyncThunk(
+    'tvShowSlice/getTvShow',
     async ({id},{rejectWithValue})=>{
         try {
-            const {data} = await movieService.getMovie(id);
+            const {data} = await tvShowService.getTvShow(id);
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -65,10 +63,10 @@ const getMovie = createAsyncThunk(
 );
 
 const getVideos = createAsyncThunk(
-    'movieSlice/getVideos',
+    'tvShowSlice/getVideos',
     async ({id}, {rejectWithValue})=>{
         try {
-            const {data} = await movieService.getVideos(id);
+            const {data} = await tvShowService.getVideos(id);
             return data;
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -76,14 +74,14 @@ const getVideos = createAsyncThunk(
     }
 );
 
-const {reducer:movieReducer} = movieSlice;
+const {reducer:tvShowReducer} = tvShowSlice;
 
-const movieActions = {
+const tvShowActions ={
     getAll,
-    getMovie,
+    getTvShow,
     getVideos
-};
+}
 export{
-    movieReducer,
-    movieActions
+    tvShowReducer,
+    tvShowActions
 }
